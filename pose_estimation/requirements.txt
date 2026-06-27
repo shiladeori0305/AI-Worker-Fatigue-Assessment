@@ -1,0 +1,12 @@
+# ──────────────────────────────────────────────────────────────────
+# requirements.txt — Module 2: Pose Estimation and Keypoint Extraction
+# Python 3.11+
+# Install with:  pip install -r requirements.txt
+# ──────────────────────────────────────────────────────────────────
+
+mediapipe>=0.10.9       # Pose estimation (BlazePose)
+opencv-python>=4.9.0    # Video I/O and frame drawing
+numpy>=1.26.0           # Array operations
+
+# Note: mediapipe installs its own compatible version of protobuf and
+# absl-py automatically. Do not pin those manually to avoid conflicts.

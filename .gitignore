@@ -1,0 +1,5 @@
+myenv/
+.task
+*.mp4
+*.avi
+output/
