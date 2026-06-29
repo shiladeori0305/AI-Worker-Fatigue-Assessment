@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Refinery Safety Monitor | Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {"on-tertiary-fixed-variant": "#574425", "secondary-container": "#005664", "on-secondary-container": "#89c9da", "on-primary-fixed-variant": "#3f465c", "on-surface-variant": "#c6c6cd", "tertiary-container": "#231500", "on-error": "#690005", "on-primary-fixed": "#131b2e", "on-error-container": "#ffdad6", "inverse-primary": "#565e74", "on-tertiary-fixed": "#271901", surface: "#081425", "primary-container": "#0f172a", "tertiary-fixed": "#fcdeb5", "inverse-surface": "#d8e3fb", "error-container": "#93000a", "outline-variant": "#45464d", "tertiary-fixed-dim": "#dec29a", "on-secondary-fixed-variant": "#004e5b", "on-secondary-fixed": "#001f26", "on-tertiary-container": "#957d5a", "on-primary-container": "#798098", outline: "#909097", "primary-fixed": "#dae2fd", secondary: "#90d0e1", error: "#ffb4ab", "surface-bright": "#2f3a4c", "on-background": "#d8e3fb", primary: "#bec6e0", "on-primary": "#283044", "surface-container-low": "#111c2d", "secondary-fixed-dim": "#90d0e1", "inverse-on-surface": "#263143", "surface-dim": "#081425", "primary-fixed-dim": "#bec6e0", "surface-container-highest": "#2a3548", tertiary: "#dec29a", "surface-tint": "#bec6e0", "surface-variant": "#2a3548", background: "#081425", "on-tertiary": "#3e2d11", "on-secondary": "#003640", "surface-container-lowest": "#040e1f", "on-surface": "#d8e3fb", "secondary-fixed": "#acedfe", "surface-container": "#152031", "surface-container-high": "#1f2a3c"}, borderRadius: {DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem"}, spacing: {"stack-lg": "2rem", "container-max": "1440px", gutter: "1.5rem", "stack-md": "1rem", "margin-edge": "2rem", "stack-sm": "0.5rem"}, fontFamily: {"headline-lg": ["Inter"], "headline-lg-mobile": ["Inter"], "headline-md": ["Inter"], "data-mono": ["JetBrains Mono"], "body-lg": ["Inter"], "body-md": ["Inter"], "label-caps": ["Inter"], "display-lg": ["Inter"], headline: ["Inter"], display: ["Inter"], body: ["Inter"], label: ["Inter"]}, fontSize: {"headline-lg": ["32px", {lineHeight: "40px", fontWeight: "600"}], "headline-lg-mobile": ["24px", {lineHeight: "30px", fontWeight: "600"}], "headline-md": ["24px", {lineHeight: "32px", fontWeight: "600"}], "data-mono": ["20px", {lineHeight: "24px", fontWeight: "500"}], "body-lg": ["18px", {lineHeight: "28px", fontWeight: "400"}], "body-md": ["16px", {lineHeight: "24px", fontWeight: "400"}], "label-caps": ["12px", {lineHeight: "16px", letterSpacing: "0.05em", fontWeight: "700"}], "display-lg": ["48px", {lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700"}]}}}};</script>
+<style>
+        body {
+            background-color: #081425;
+            color: #d8e3fb;
+            overflow-x: hidden;
+        }
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid #334155;
+        }
+        .critical-glow {
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.3);
+        }
+        .video-overlay {
+            background: linear-gradient(0deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 50%);
+        }
+        .pulse-red {
+            animation: pulse-red 2s infinite;
+        }
+        @keyframes pulse-red {
+            0% { opacity: 1; }
+            50% { opacity: 0.6; }
+            100% { opacity: 1; }
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md flex h-screen overflow-hidden">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col h-screen py-stack-md px-stack-sm bg-surface-container-low border-r border-outline-variant w-64 shrink-0">
+<div class="px-stack-sm mb-stack-lg">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">factory</span>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md text-primary leading-none">Plant Area A</h2>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Sector 7 North</span>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-stack-sm py-2 bg-secondary-container text-on-secondary-container rounded-lg font-bold transition-all duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">sensors</span>
+<span class="font-label-caps text-label-caps uppercase">Live Feeds</span>
+</a>
+<a class="flex items-center gap-3 px-stack-sm py-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all duration-150" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="font-label-caps text-label-caps uppercase">Historical Data</span>
+</a>
+<a class="flex items-center gap-3 px-stack-sm py-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all duration-150" href="#">
+<span class="material-symbols-outlined">assessment</span>
+<span class="font-label-caps text-label-caps uppercase">Risk Matrix</span>
+</a>
+<a class="flex items-center gap-3 px-stack-sm py-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all duration-150" href="#">
+<span class="material-symbols-outlined">monitor_heart</span>
+<span class="font-label-caps text-label-caps uppercase">System Health</span>
+</a>
+</nav>
+<div class="mt-auto pt-stack-md border-t border-outline-variant">
+<button class="w-full mb-stack-md bg-on-primary-container text-surface py-2 rounded-lg font-bold font-label-caps text-label-caps uppercase active:scale-95 transition-transform">
+                Generate Report
+            </button>
+<div class="space-y-1">
+<a class="flex items-center gap-3 px-stack-sm py-2 text-on-surface-variant hover:text-on-surface transition-all" href="#">
+<span class="material-symbols-outlined">support_agent</span>
+<span class="font-label-caps text-label-caps uppercase">Support</span>
+</a>
+<a class="flex items-center gap-3 px-stack-sm py-2 text-on-surface-variant hover:text-on-surface transition-all" href="#">
+<span class="material-symbols-outlined text-error">logout</span>
+<span class="font-label-caps text-label-caps uppercase">Sign Out</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Viewport -->
+<div class="flex-1 flex flex-col min-w-0 bg-background overflow-hidden relative">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center px-gutter w-full h-16 bg-surface-container border-b border-outline-variant shrink-0 z-10">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md font-bold text-on-surface">Refinery Safety Monitor</span>
+<div class="flex items-center gap-2 px-3 py-1 bg-error-container/20 border border-error/30 rounded-full critical-glow pulse-red">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span class="font-label-caps text-label-caps text-error uppercase">3 Critical Alerts</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative group hidden sm:block">
+<input class="bg-surface-container-lowest border border-outline-variant rounded-full px-4 py-1.5 text-body-md w-64 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Search parameters..." type="text"/>
+<span class="material-symbols-outlined absolute right-3 top-2 text-on-surface-variant text-sm">search</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-on-surface-variant hover:bg-surface-variant rounded-full transition-colors"><span class="material-symbols-outlined">notifications</span></button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-variant rounded-full transition-colors"><span class="material-symbols-outlined">settings</span></button>
+<div class="w-8 h-8 rounded-full bg-primary overflow-hidden border border-outline ml-2">
+<img class="w-full h-full object-cover" data-alt="Close-up professional portrait of a chief safety operator wearing high-visibility gear and a safety helmet in a dimly lit refinery control room, focused and authoritative expression, cinematic industrial lighting, high-contrast dark mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDl0c7poskwYoy5F545ofYeQvZx6iWh2HKQApaewjB1oEl1jVY_SA6yEZzHYN3mttSPkB1ZfFbV7-dE0jG-LaWoGsAGSProHovZ0Hp-fsGXkSxDNylhxmBtABMraUJnagr2gEAIEB6uVT-Oo71k8wL-lORFk0UBbBh7YLkEk1eNUvEfiNrNkDVWbdlf79wmsQPdPwyiPZCSiegdO70FdisI9ZNEXWOmKsDNx-xQTfsh2tExUsZN2lGX5-jZ4Ov5u9590m3PTc_CaBw"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Content Area -->
+<main class="flex-1 overflow-y-auto p-gutter custom-scrollbar">
+<div class="max-w-[1600px] mx-auto space-y-gutter">
+<!-- Top Grid: Feed & Sidebar -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Left Column: Live Safety Feed -->
+<div class="col-span-12 lg:col-span-8 space-y-gutter">
+<div class="glass-panel rounded-xl overflow-hidden flex flex-col border border-outline-variant">
+<div class="px-stack-md py-stack-sm flex justify-between items-center bg-surface-container-high/50">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-error animate-pulse"></span>
+<h3 class="font-label-caps text-label-caps uppercase tracking-widest">Live Safety Feed: Cam-07-North</h3>
+</div>
+<div class="flex gap-2">
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest border border-outline-variant font-data-mono text-[10px] text-on-surface-variant">FPS: 30</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest border border-outline-variant font-data-mono text-[10px] text-on-surface-variant">LAT: 14ms</span>
+</div>
+</div>
+<div class="relative aspect-video bg-black group">
+<div class="absolute inset-0 z-0" data-alt="A gritty high-angle industrial refinery interior view at night with orange safety lights. Multiple workers in orange jumpsuits and hardhats are moving around heavy machinery. Computer vision overlays show translucent glowing green and red bounding boxes around workers with safety risk labels floating nearby. High-tech HUD aesthetic, moody atmosphere." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCdKtjExckybi2VGPwrzJhq5QdiAVTdOaKRwccB0RjP23uIMbJScxcV5Nz6TzYKTxgsInU4b-x0J_VWvN9XcApNE3z45kG7fMeysyhjjWYIYq-lYx6NpjoJuDTA_bNJDCQXT_nuybfovAGXl1VeZ-eCSagk1Gbz6RZbNhXPRGelww7R5wNu-gvycvOri3_b8omxQvmAyn7e7zdcy6YTFTngHtJnvQ1q83FJDnI_jYmUbINnYhAzfNqk26mVkpOjZvQO32RstIu7wZM')"></div>
+<!-- Simulated Bounding Boxes -->
+<div class="absolute top-[20%] left-[30%] w-24 h-48 border-2 border-primary/50 pointer-events-none">
+<div class="absolute -top-6 left-0 bg-primary/20 backdrop-blur px-1 text-[10px] font-data-mono text-primary border border-primary/50">WORKER_342 [SAFE]</div>
+</div>
+<div class="absolute top-[40%] right-[25%] w-28 h-52 border-2 border-error pointer-events-none">
+<div class="absolute -top-6 left-0 bg-error/20 backdrop-blur px-1 text-[10px] font-data-mono text-error border border-error/50">WORKER_109 [FATIGUE_WARN]</div>
+</div>
+<div class="video-overlay absolute inset-0 pointer-events-none"></div>
+<div class="absolute bottom-4 left-4 flex gap-3">
+<button class="bg-surface/80 hover:bg-surface px-3 py-1 rounded text-xs font-label-caps flex items-center gap-1 border border-outline-variant"><span class="material-symbols-outlined text-sm">videocam</span> Record</button>
+<button class="bg-surface/80 hover:bg-surface px-3 py-1 rounded text-xs font-label-caps flex items-center gap-1 border border-outline-variant"><span class="material-symbols-outlined text-sm">zoom_in</span> Focus</button>
+</div>
+</div>
+</div>
+<!-- Fatigue Trend Chart Panel -->
+<div class="glass-panel rounded-xl p-stack-md border border-outline-variant">
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-label-caps text-label-caps uppercase text-on-surface-variant">Fatigue Trend (Last 8 Hours)</h3>
+<div class="flex gap-4">
+<div class="flex items-center gap-2"><span class="w-3 h-0.5 bg-primary"></span> <span class="text-[10px] font-label-caps text-on-surface-variant">AGGREGATE RISK</span></div>
+<div class="flex items-center gap-2"><span class="w-3 h-0.5 bg-error"></span> <span class="text-[10px] font-label-caps text-on-surface-variant">THRESHOLD</span></div>
+</div>
+</div>
+<div class="h-48 w-full relative flex items-end justify-between gap-1">
+<!-- Simulated Line Chart via CSS / Simple elements -->
+<svg class="absolute inset-0 w-full h-full" preserveaspectratio="none" viewbox="0 0 400 100">
+<path d="M0,80 Q50,70 100,75 T200,40 T300,85 T400,60" fill="none" stroke="rgba(190, 198, 224, 0.5)" stroke-width="2"></path>
+<line stroke="rgba(239, 68, 68, 0.4)" stroke-dasharray="4" stroke-width="1" x1="0" x2="400" y1="30" y2="30"></line>
+</svg>
+<div class="absolute inset-0 flex flex-col justify-between pointer-events-none">
+<div class="border-b border-outline-variant/30 w-full h-0"></div>
+<div class="border-b border-outline-variant/30 w-full h-0"></div>
+<div class="border-b border-outline-variant/30 w-full h-0"></div>
+<div class="border-b border-outline-variant/30 w-full h-0"></div>
+</div>
+<div class="z-10 w-full flex justify-between px-2 pt-48 mt-2 text-[10px] font-data-mono text-on-surface-variant">
+<span>08:00</span><span>10:00</span><span>12:00</span><span>14:00</span><span>16:00</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Sidebar within content -->
+<div class="col-span-12 lg:col-span-4 space-y-gutter">
+<!-- Active Alerts -->
+<div class="glass-panel rounded-xl flex flex-col border border-outline-variant h-[400px]">
+<div class="p-stack-md border-b border-outline-variant flex justify-between items-center bg-surface-container-high/30">
+<h3 class="font-label-caps text-label-caps uppercase">Active Alerts</h3>
+<span class="material-symbols-outlined text-sm text-on-surface-variant">filter_list</span>
+</div>
+<div class="flex-1 overflow-y-auto custom-scrollbar p-stack-sm space-y-2">
+<div class="bg-error/10 border-l-4 border-error p-3 rounded shadow-sm">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-caps text-label-caps text-error">CRITICAL FATIGUE</span>
+<span class="font-data-mono text-[10px] text-on-surface-variant">14:22:10</span>
+</div>
+<p class="font-body-md text-on-surface text-sm mb-1">Marcus Thorne (ID: 902)</p>
+<p class="text-xs text-on-surface-variant">Slow blink detected, micro-sleep event risk high.</p>
+</div>
+<div class="bg-tertiary/10 border-l-4 border-tertiary p-3 rounded shadow-sm">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-caps text-label-caps text-tertiary">ERGONOMIC STRAIN</span>
+<span class="font-data-mono text-[10px] text-on-surface-variant">14:18:05</span>
+</div>
+<p class="font-body-md text-on-surface text-sm mb-1">Sarah Jenkins (ID: 442)</p>
+<p class="text-xs text-on-surface-variant">Repetitive overhead lifting exceeded limit (30min).</p>
+</div>
+<div class="bg-error/10 border-l-4 border-error p-3 rounded shadow-sm">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-caps text-label-caps text-error">PPE VIOLATION</span>
+<span class="font-data-mono text-[10px] text-on-surface-variant">14:05:44</span>
+</div>
+<p class="font-body-md text-on-surface text-sm mb-1">Unidentified Personnel</p>
+<p class="text-xs text-on-surface-variant">No safety eyewear detected in Zone 4.</p>
+</div>
+</div>
+<button class="m-stack-sm py-2 text-center text-xs font-label-caps uppercase text-primary border border-primary/30 hover:bg-primary/10 transition-colors rounded">
+                                Clear All Notifications
+                            </button>
+</div>
+<!-- Risk Distribution Donut -->
+<div class="glass-panel rounded-xl p-stack-md border border-outline-variant flex flex-col items-center">
+<h3 class="font-label-caps text-label-caps uppercase text-on-surface-variant self-start mb-6">Risk Distribution</h3>
+<div class="relative w-48 h-48 mb-6">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="transparent" r="40" stroke="#1e293b" stroke-width="12"></circle>
+<circle cx="50" cy="50" fill="transparent" r="40" stroke="#ffb4ab" stroke-dasharray="251" stroke-dashoffset="180" stroke-width="12"></circle>
+<circle cx="50" cy="50" fill="transparent" r="40" stroke="#dec29a" stroke-dasharray="251" stroke-dashoffset="100" stroke-width="12"></circle>
+<circle cx="50" cy="50" fill="transparent" r="40" stroke="#bec6e0" stroke-dasharray="251" stroke-dashoffset="30" stroke-width="12"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-data-mono text-headline-md leading-none">24</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant uppercase">Total Events</span>
+</div>
+</div>
+<div class="w-full space-y-2">
+<div class="flex justify-between items-center text-xs">
+<div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-error"></span> <span>Fatigue</span></div>
+<span class="font-data-mono">42%</span>
+</div>
+<div class="flex justify-between items-center text-xs">
+<div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-tertiary"></span> <span>Ergonomic</span></div>
+<span class="font-data-mono">35%</span>
+</div>
+<div class="flex justify-between items-center text-xs">
+<div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-primary"></span> <span>PPE / Other</span></div>
+<span class="font-data-mono">23%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Full-Width: Worker Risk Assessment Table -->
+<div class="glass-panel rounded-xl border border-outline-variant overflow-hidden">
+<div class="px-gutter py-stack-md border-b border-outline-variant flex justify-between items-center bg-surface-container-high/30">
+<h3 class="font-headline-md text-headline-md text-primary">Worker Risk Assessment</h3>
+<div class="flex gap-2">
+<button class="px-3 py-1.5 bg-surface-container-lowest border border-outline-variant rounded flex items-center gap-2 text-xs font-label-caps hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-sm">download</span> Export CSV
+                            </button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-lowest/50 border-b border-outline-variant">
+<th class="px-gutter py-3 font-label-caps text-[11px] text-on-surface-variant uppercase">Worker ID</th>
+<th class="px-gutter py-3 font-label-caps text-[11px] text-on-surface-variant uppercase">Name</th>
+<th class="px-gutter py-3 font-label-caps text-[11px] text-on-surface-variant uppercase">Fatigue Score</th>
+<th class="px-gutter py-3 font-label-caps text-[11px] text-on-surface-variant uppercase">Primary Ergonomic Risk</th>
+<th class="px-gutter py-3 font-label-caps text-[11px] text-on-surface-variant uppercase">Shift Duration</th>
+<th class="px-gutter py-3 font-label-caps text-[11px] text-on-surface-variant uppercase">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/30">
+<tr class="hover:bg-surface-container-high/20 transition-colors">
+<td class="px-gutter py-4 font-data-mono text-sm">#902-MT</td>
+<td class="px-gutter py-4 font-body-md">Marcus Thorne</td>
+<td class="px-gutter py-4">
+<div class="flex items-center gap-3">
+<span class="font-data-mono text-error">8.4</span>
+<div class="w-24 h-1.5 bg-surface-container-lowest rounded-full overflow-hidden">
+<div class="h-full bg-error w-[84%]"></div>
+</div>
+</div>
+</td>
+<td class="px-gutter py-4 text-sm text-on-surface-variant">Lumbar strain (High)</td>
+<td class="px-gutter py-4 text-sm text-on-surface-variant">07:42:15</td>
+<td class="px-gutter py-4">
+<span class="px-2 py-1 rounded bg-error-container text-on-error-container text-[10px] font-bold uppercase border border-error">INTERVENTION REQ</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-high/20 transition-colors">
+<td class="px-gutter py-4 font-data-mono text-sm">#442-SJ</td>
+<td class="px-gutter py-4 font-body-md">Sarah Jenkins</td>
+<td class="px-gutter py-4">
+<div class="flex items-center gap-3">
+<span class="font-data-mono text-tertiary">5.2</span>
+<div class="w-24 h-1.5 bg-surface-container-lowest rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-[52%]"></div>
+</div>
+</div>
+</td>
+<td class="px-gutter py-4 text-sm text-on-surface-variant">Shoulder fatigue (Med)</td>
+<td class="px-gutter py-4 text-sm text-on-surface-variant">04:12:00</td>
+<td class="px-gutter py-4">
+<span class="px-2 py-1 rounded bg-tertiary-container text-tertiary text-[10px] font-bold uppercase border border-tertiary">MONITORING</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-high/20 transition-colors">
+<td class="px-gutter py-4 font-data-mono text-sm">#115-DP</td>
+<td class="px-gutter py-4 font-body-md">David Park</td>
+<td class="px-gutter py-4">
+<div class="flex items-center gap-3">
+<span class="font-data-mono text-primary">1.8</span>
+<div class="w-24 h-1.5 bg-surface-container-lowest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[18%]"></div>
+</div>
+</div>
+</td>
+<td class="px-gutter py-4 text-sm text-on-surface-variant">None Detected</td>
+<td class="px-gutter py-4 text-sm text-on-surface-variant">02:30:10</td>
+<td class="px-gutter py-4">
+<span class="px-2 py-1 rounded bg-secondary-container text-on-secondary-container text-[10px] font-bold uppercase border border-outline">NOMINAL</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</div>
+<script>
+        // Micro-interaction for row highlighting
+        document.querySelectorAll('tbody tr').forEach(row => {
+            row.addEventListener('mouseenter', () => {
+                row.classList.add('translate-x-1');
+            });
+            row.addEventListener('mouseleave', () => {
+                row.classList.remove('translate-x-1');
+            });
+        });
+
+        // Simple real-time clock update (for HUD feel)
+        setInterval(() => {
+            const now = new Date();
+            const timeStr = now.toTimeString().split(' ')[0];
+            // If we had a clock element we could update it
+        }, 1000);
+    </script>
+</body></html>
