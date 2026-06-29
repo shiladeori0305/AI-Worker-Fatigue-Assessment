@@ -1,96 +1,87 @@
 ---
-name: Industrial Sentinel
+name: Kinetic Sentinel
 colors:
-  surface: '#081425'
-  surface-dim: '#081425'
-  surface-bright: '#2f3a4c'
-  surface-container-lowest: '#040e1f'
-  surface-container-low: '#111c2d'
-  surface-container: '#152031'
-  surface-container-high: '#1f2a3c'
-  surface-container-highest: '#2a3548'
-  on-surface: '#d8e3fb'
-  on-surface-variant: '#c6c6cd'
-  inverse-surface: '#d8e3fb'
-  inverse-on-surface: '#263143'
-  outline: '#909097'
-  outline-variant: '#45464d'
-  surface-tint: '#bec6e0'
-  primary: '#bec6e0'
-  on-primary: '#283044'
-  primary-container: '#0f172a'
-  on-primary-container: '#798098'
-  inverse-primary: '#565e74'
-  secondary: '#90d0e1'
-  on-secondary: '#003640'
-  secondary-container: '#005664'
-  on-secondary-container: '#89c9da'
-  tertiary: '#dec29a'
-  on-tertiary: '#3e2d11'
-  tertiary-container: '#231500'
-  on-tertiary-container: '#957d5a'
+  surface: '#0e1416'
+  surface-dim: '#0e1416'
+  surface-bright: '#343a3c'
+  surface-container-lowest: '#090f11'
+  surface-container-low: '#171d1e'
+  surface-container: '#1b2122'
+  surface-container-high: '#252b2d'
+  surface-container-highest: '#303638'
+  on-surface: '#dee3e6'
+  on-surface-variant: '#bcc9cd'
+  inverse-surface: '#dee3e6'
+  inverse-on-surface: '#2b3133'
+  outline: '#869397'
+  outline-variant: '#3d494c'
+  surface-tint: '#4cd7f6'
+  primary: '#4cd7f6'
+  on-primary: '#003640'
+  primary-container: '#06b6d4'
+  on-primary-container: '#00424f'
+  inverse-primary: '#00687a'
+  secondary: '#4edea3'
+  on-secondary: '#003824'
+  secondary-container: '#00a572'
+  on-secondary-container: '#00311f'
+  tertiary: '#ffb95f'
+  on-tertiary: '#472a00'
+  tertiary-container: '#e79400'
+  on-tertiary-container: '#563400'
   error: '#ffb4ab'
   on-error: '#690005'
   error-container: '#93000a'
   on-error-container: '#ffdad6'
-  primary-fixed: '#dae2fd'
-  primary-fixed-dim: '#bec6e0'
-  on-primary-fixed: '#131b2e'
-  on-primary-fixed-variant: '#3f465c'
-  secondary-fixed: '#acedfe'
-  secondary-fixed-dim: '#90d0e1'
-  on-secondary-fixed: '#001f26'
-  on-secondary-fixed-variant: '#004e5b'
-  tertiary-fixed: '#fcdeb5'
-  tertiary-fixed-dim: '#dec29a'
-  on-tertiary-fixed: '#271901'
-  on-tertiary-fixed-variant: '#574425'
-  background: '#081425'
-  on-background: '#d8e3fb'
-  surface-variant: '#2a3548'
+  primary-fixed: '#acedff'
+  primary-fixed-dim: '#4cd7f6'
+  on-primary-fixed: '#001f26'
+  on-primary-fixed-variant: '#004e5c'
+  secondary-fixed: '#6ffbbe'
+  secondary-fixed-dim: '#4edea3'
+  on-secondary-fixed: '#002113'
+  on-secondary-fixed-variant: '#005236'
+  tertiary-fixed: '#ffddb8'
+  tertiary-fixed-dim: '#ffb95f'
+  on-tertiary-fixed: '#2a1700'
+  on-tertiary-fixed-variant: '#653e00'
+  background: '#0e1416'
+  on-background: '#dee3e6'
+  surface-variant: '#303638'
 typography:
   display-lg:
     fontFamily: Inter
-    fontSize: 48px
-    fontWeight: '700'
-    lineHeight: 56px
-    letterSpacing: -0.02em
-  headline-lg:
-    fontFamily: Inter
     fontSize: 32px
-    fontWeight: '600'
+    fontWeight: '700'
     lineHeight: 40px
+    letterSpacing: -0.02em
   headline-md:
     fontFamily: Inter
-    fontSize: 24px
+    fontSize: 20px
     fontWeight: '600'
-    lineHeight: 32px
-  body-lg:
-    fontFamily: Inter
-    fontSize: 18px
-    fontWeight: '400'
     lineHeight: 28px
+  data-mono-lg:
+    fontFamily: Geist
+    fontSize: 24px
+    fontWeight: '500'
+    lineHeight: 32px
+    letterSpacing: 0.05em
   body-md:
     fontFamily: Inter
-    fontSize: 16px
+    fontSize: 14px
     fontWeight: '400'
-    lineHeight: 24px
+    lineHeight: 20px
   label-caps:
+    fontFamily: Geist
+    fontSize: 11px
+    fontWeight: '600'
+    lineHeight: 16px
+    letterSpacing: 0.1em
+  helper-sm:
     fontFamily: Inter
     fontSize: 12px
-    fontWeight: '700'
+    fontWeight: '400'
     lineHeight: 16px
-    letterSpacing: 0.05em
-  data-mono:
-    fontFamily: JetBrains Mono
-    fontSize: 20px
-    fontWeight: '500'
-    lineHeight: 24px
-  headline-lg-mobile:
-    fontFamily: Inter
-    fontSize: 24px
-    fontWeight: '600'
-    lineHeight: 30px
 rounded:
   sm: 0.125rem
   DEFAULT: 0.25rem
@@ -99,69 +90,67 @@ rounded:
   xl: 0.75rem
   full: 9999px
 spacing:
-  container-max: 1440px
-  gutter: 1.5rem
-  margin-edge: 2rem
-  stack-sm: 0.5rem
-  stack-md: 1rem
-  stack-lg: 2rem
+  unit: 4px
+  container-padding: 24px
+  gutter: 16px
+  panel-gap: 12px
+  stack-tight: 4px
+  stack-md: 16px
 ---
 
 ## Brand & Style
 
-This design system is engineered for high-stakes industrial environments where cognitive load must be minimized and critical data must be immediately actionable. The brand personality is authoritative, resilient, and ultra-functional, reflecting the rugged nature of refinery operations.
+This design system is engineered for mission-critical refinery safety analysis, where cognitive load management and rapid error detection are paramount. The aesthetic is rooted in **Industrial HUD (Heads-Up Display) Minimalism**, prioritizing high-density data visualization within a structured, low-distraction environment. 
 
-The visual style is **Industrial Dark Mode with Subtle Glassmorphism**. It combines the structural reliability of a physical control room with the sophisticated data density of modern software. The aesthetic balances deep, matte surfaces with translucent "glass" overlays for secondary information, ensuring the most vital safety metrics appear to float and command attention. The emotional response is one of calm control and absolute clarity amidst complex mechanical processes.
+The personality is authoritative, precise, and utilitarian. It utilizes a layered "Control Room" metaphor: a deep graphite base representing the physical environment, with steel-gray panels acting as active consoles. Subtle glows and high-chroma status indicators draw immediate attention to anomalies without causing visual fatigue during long shifts. The system avoids decorative elements, ensuring every pixel serves a functional diagnostic purpose.
 
 ## Colors
 
-The palette is rooted in a **Deep Charcoal and Teal-inflected Slate** foundation to reduce eye strain in low-light control room settings. 
+The palette is anchored by a dark-mode-only foundation to reduce eye strain in dimly lit control rooms.
 
-- **Primary & Neutral:** The background utilizes `#0F172A` (Deep Navy/Charcoal) to provide maximum contrast for data. Surfaces and containers use `#1E293B` to create a tiered hierarchy of information.
-- **Safety Accents:** These are non-negotiable functional colors. 
-    - **Emerald (#10B981):** Indicates nominal operations and safe zones.
-    - **Amber (#F59E0B):** Used for warnings, maintenance requirements, and cautionary trends.
-    - **Crimson (#EF4444):** Reserved exclusively for active alerts, gas leaks, or immediate life-safety hazards.
-- **Data Visualization:** Use the new Secondary Teal-Slate `#2E7281` for technical secondary labels, trend lines, and inactive states to keep the interface decluttered with a professional, cool-toned precision.
+- **Foundational Neutrals:** The base background is a deep Graphite (#121417), while Steel-Gray (#1e2126) is reserved for interactive panels and containers.
+- **Status Indicators:** Color is used exclusively for semantic signaling. 
+    - **Critical Risk (Red):** Used for emergency shutdowns, pipe pressure breaches, and immediate hazards.
+    - **Warning (Amber):** Indicates threshold exceedance or maintenance requirements.
+    - **Safe (Green):** Confirms active monitoring and nominal operations.
+    - **System Info (Cyan):** The primary accent for interactive states, UI chrome, and telemetry data.
 
 ## Typography
 
-The design system utilizes **Inter** for its exceptional legibility and neutral, professional tone. It scales effectively from small status labels to large numerical displays.
+Typography balances rapid legibility with technical precision. **Inter** provides high readability for labels and status messages, while **Geist** (a technical, developer-centric font) is used for all numerical data and telemetry to ensure tabular alignment and a "monospaced" engineering feel.
 
-- **Numerical Data:** For real-time sensor readings (PSI, Temperature, Gas Levels), use a monospaced font like JetBrains Mono or Inter's tabular font-feature settings to ensure numbers don't jump horizontally during updates.
-- **Hierarchy:** Use `label-caps` for table headers and metadata to differentiate them clearly from primary data points.
-- **Readability:** High contrast (White/Light Gray on Dark) is maintained throughout. Weights are kept at 400 for body and 600+ for headings to ensure "glow" from high-brightness monitors doesn't blur the text.
+- **Headlines:** Reserved for module titles and equipment IDs.
+- **Data Display:** Uses monospaced numerals to prevent layout shifting during real-time updates.
+- **Labels:** Small-caps are utilized for static field descriptors to distinguish them from dynamic live data.
 
 ## Layout & Spacing
 
-This design system follows a **12-column Bootstrap-compatible fluid grid**. The layout is designed to be "glanceable," with critical metrics positioned in the top-left quadrant or centered in large hero modules.
+The layout employs a **Fluid-Density Grid**. While the overall container remains fluid to accommodate ultra-wide control room monitors, internal panels follow a strict 4px baseline grid.
 
-- **Grid:** 1.5rem (24px) gutters provide enough "breathing room" to prevent data density from becoming overwhelming.
-- **Mobile/Tablet:** On smaller devices, the 12-column grid collapses to a single column. Information cards should reorder based on "Severity" rather than chronological order.
-- **Density:** The dashboard uses a "Compact" spacing model. Vertical margins between related data points are kept tight (8px or 16px) to maximize the amount of information visible without scrolling.
+- **High Density:** Padding within data tables and property panels is minimized to maximize the information visible above the fold.
+- **Visual Grouping:** Use 12px gaps between primary modules (e.g., Boiler Map vs. Flow Metrics) to create clear mental boundaries.
+- **Safe Margins:** A 24px outer margin ensures UI elements do not bleed into the bezel of industrial hardware displays.
 
 ## Elevation & Depth
 
-To simulate a technical control panel, this design system uses **Tonal Layering and Glassmorphism** instead of traditional drop shadows.
+This design system uses **Tonal Layering** and **Subtle Inner Glows** rather than traditional drop shadows to indicate hierarchy.
 
-- **Base Layer:** `#0F172A` (Background).
-- **Surface Layer:** `#1E293B` with a subtle 1px border of `#334155` to define edges.
-- **Overlay/Glass Layer:** Used for modals or floating HUD elements. Apply a `backdrop-filter: blur(12px)` with a semi-transparent background `rgba(30, 41, 59, 0.7)`.
-- **Critical Focus:** Active alerts use a subtle outer glow (e.g., `0 0 15px rgba(239, 68, 68, 0.3)`) rather than a shadow, mimicking an illuminated physical LED indicator.
+- **Level 0 (Base):** #121417 (The refinery floor).
+- **Level 1 (Panels):** #1e2126 with a 1px stroke of #2d3139. This creates a "machined" look.
+- **Level 2 (Popovers/Modals):** Same as Level 1 but with a subtle 8px ambient shadow and a 1px border of #334155 to lift it visually.
+- **Active Indicators:** High-priority alerts utilize a soft outer glow (bloom effect) in the semantic color (Red/Amber) to simulate physical LED indicators on a control board.
 
 ## Shapes
 
-The shape language is **Soft (0.25rem)**, leaning towards a technical, machined look. 
-
-- **Corners:** Avoid overly rounded or circular "consumer" aesthetics. Use 4px (0.25rem) radii for standard buttons and cards to maintain a precise, industrial feel. 
-- **Status Indicators:** Use small squares or "pill" shapes for status badges, but keep the overall container structure rectangular.
-- **Interactive Elements:** Buttons and inputs should have clearly defined, sharp boundaries to suggest a tactile "mechanical" toggle.
+The shape language is **Soft-Industrial**. 
+- **Standard Radius:** 4px (Soft) is the system default for buttons, panels, and input fields. This maintains a professional, rigid feel while being more modern than sharp 90-degree corners.
+- **Data Points:** Graph nodes and status pips use 0px (sharp) or 100% (pill) shapes to differentiate between structural UI and data markers.
 
 ## Components
 
-- **Buttons:** Primary buttons are solid Teal-Slate (`#2E7281`) with high-contrast white text. Danger/Alert buttons use a solid Red-600 background. All buttons feature a 1px inset border to simulate a "bezel" look.
-- **Value Cards:** These are the core of the dashboard. They must feature a large `data-mono` value, a `label-caps` title, and a trend sparkline. The background color of the card should shift slightly when in a "Warning" or "Alert" state.
-- **Status Chips:** Small, rectangular badges with a background opacity of 15% and a solid 1px border of the status color (Emerald, Amber, or Crimson).
-- **Input Fields:** Darker than the surface layer (`#020617`), with a subtle 1px border. On focus, the border should glow with the Secondary color.
-- **Alert List:** A vertical stack of high-contrast bars. Critical alerts should pulse slightly (opacity animation 0.8 to 1.0) to draw the eye immediately.
-- **Gauges & Meters:** Use semi-circular or linear progress bars. The "fill" color should dynamically change from Emerald to Amber to Crimson as values cross safety thresholds.
+- **Buttons:** Primary actions use a Cyan (#06b6d4) outline with a subtle background tint. Critical "E-Stop" buttons are solid Red (#ef4444) with white bold text.
+- **Status Pips:** Small circular indicators that "pulse" slowly when a system is in a Warning state.
+- **Input Fields:** Darker than the panel background (#121417) with a 1px border. The focus state uses a Cyan glow.
+- **Cards/Modules:** Every card must have a header section with a 1px bottom separator and a label in `label-caps`.
+- **Data Grids:** Zebra-striping is prohibited. Use thin 1px horizontal separators in #2d3139 to maintain vertical scanning speed.
+- **Telemetry Gauges:** Circular or linear progress bars using a "segmented" look (divided into small blocks) to mimic vintage digital readouts.

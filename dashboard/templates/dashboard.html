@@ -3,350 +3,301 @@
 <html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Refinery Safety Monitor | Dashboard</title>
+<title>AI-Based Worker Fatigue and Ergonomic Risk Assessment</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {"on-tertiary-fixed-variant": "#574425", "secondary-container": "#005664", "on-secondary-container": "#89c9da", "on-primary-fixed-variant": "#3f465c", "on-surface-variant": "#c6c6cd", "tertiary-container": "#231500", "on-error": "#690005", "on-primary-fixed": "#131b2e", "on-error-container": "#ffdad6", "inverse-primary": "#565e74", "on-tertiary-fixed": "#271901", surface: "#081425", "primary-container": "#0f172a", "tertiary-fixed": "#fcdeb5", "inverse-surface": "#d8e3fb", "error-container": "#93000a", "outline-variant": "#45464d", "tertiary-fixed-dim": "#dec29a", "on-secondary-fixed-variant": "#004e5b", "on-secondary-fixed": "#001f26", "on-tertiary-container": "#957d5a", "on-primary-container": "#798098", outline: "#909097", "primary-fixed": "#dae2fd", secondary: "#90d0e1", error: "#ffb4ab", "surface-bright": "#2f3a4c", "on-background": "#d8e3fb", primary: "#bec6e0", "on-primary": "#283044", "surface-container-low": "#111c2d", "secondary-fixed-dim": "#90d0e1", "inverse-on-surface": "#263143", "surface-dim": "#081425", "primary-fixed-dim": "#bec6e0", "surface-container-highest": "#2a3548", tertiary: "#dec29a", "surface-tint": "#bec6e0", "surface-variant": "#2a3548", background: "#081425", "on-tertiary": "#3e2d11", "on-secondary": "#003640", "surface-container-lowest": "#040e1f", "on-surface": "#d8e3fb", "secondary-fixed": "#acedfe", "surface-container": "#152031", "surface-container-high": "#1f2a3c"}, borderRadius: {DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem"}, spacing: {"stack-lg": "2rem", "container-max": "1440px", gutter: "1.5rem", "stack-md": "1rem", "margin-edge": "2rem", "stack-sm": "0.5rem"}, fontFamily: {"headline-lg": ["Inter"], "headline-lg-mobile": ["Inter"], "headline-md": ["Inter"], "data-mono": ["JetBrains Mono"], "body-lg": ["Inter"], "body-md": ["Inter"], "label-caps": ["Inter"], "display-lg": ["Inter"], headline: ["Inter"], display: ["Inter"], body: ["Inter"], label: ["Inter"]}, fontSize: {"headline-lg": ["32px", {lineHeight: "40px", fontWeight: "600"}], "headline-lg-mobile": ["24px", {lineHeight: "30px", fontWeight: "600"}], "headline-md": ["24px", {lineHeight: "32px", fontWeight: "600"}], "data-mono": ["20px", {lineHeight: "24px", fontWeight: "500"}], "body-lg": ["18px", {lineHeight: "28px", fontWeight: "400"}], "body-md": ["16px", {lineHeight: "24px", fontWeight: "400"}], "label-caps": ["12px", {lineHeight: "16px", letterSpacing: "0.05em", fontWeight: "700"}], "display-lg": ["48px", {lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700"}]}}}};</script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#1b2122",
+                        "on-secondary": "#003824",
+                        "surface-container-highest": "#303638",
+                        "on-surface-variant": "#bcc9cd",
+                        "on-secondary-fixed": "#002113",
+                        "surface-container-lowest": "#090f11",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-container": "#00424f",
+                        "secondary-fixed-dim": "#4edea3",
+                        "on-background": "#dee3e6",
+                        "on-primary-fixed": "#001f26",
+                        "on-primary": "#003640",
+                        "on-tertiary-fixed": "#2a1700",
+                        "on-primary-fixed-variant": "#004e5c",
+                        "surface-dim": "#0e1416",
+                        "surface-container-low": "#171d1e",
+                        "secondary-container": "#00a572",
+                        "inverse-surface": "#dee3e6",
+                        "primary": "#4cd7f6",
+                        "inverse-primary": "#00687a",
+                        "on-tertiary-container": "#563400",
+                        "primary-container": "#06b6d4",
+                        "on-secondary-container": "#00311f",
+                        "background": "#0e1416",
+                        "on-tertiary": "#472a00",
+                        "on-error": "#690005",
+                        "tertiary-container": "#e79400",
+                        "surface-container-high": "#252b2d",
+                        "on-secondary-fixed-variant": "#005236",
+                        "surface-tint": "#4cd7f6",
+                        "surface-bright": "#343a3c",
+                        "error-container": "#93000a",
+                        "tertiary-fixed": "#ffddb8",
+                        "on-surface": "#dee3e6",
+                        "surface": "#0e1416",
+                        "outline-variant": "#3d494c",
+                        "primary-fixed-dim": "#4cd7f6",
+                        "outline": "#869397",
+                        "secondary-fixed": "#6ffbbe",
+                        "primary-fixed": "#acedff",
+                        "tertiary": "#ffb95f",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "inverse-on-surface": "#2b3133",
+                        "secondary": "#4edea3",
+                        "error": "#ffb4ab",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "surface-variant": "#303638"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "stack-md": "16px",
+                        "stack-tight": "4px",
+                        "container-padding": "24px",
+                        "panel-gap": "12px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "helper-sm": ["Inter"],
+                        "data-mono-lg": ["Geist"],
+                        "display-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-caps": ["Geist"]
+                    },
+                    "fontSize": {
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "helper-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "data-mono-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "display-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "label-caps": ["11px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
 <style>
         body {
-            background-color: #081425;
-            color: #d8e3fb;
-            overflow-x: hidden;
+            background-color: theme('colors.background');
+            color: theme('colors.on-surface');
         }
-        .glass-panel {
-            background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid #334155;
+        .industrial-panel {
+            background-color: #1e2126;
+            border: 1px solid #2d3139;
         }
-        .critical-glow {
-            box-shadow: 0 0 15px rgba(239, 68, 68, 0.3);
+        .glow-red {
+            box-shadow: 0 0 8px rgba(239, 68, 68, 0.4);
         }
-        .video-overlay {
-            background: linear-gradient(0deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 50%);
+        .glow-amber {
+            box-shadow: 0 0 8px rgba(245, 158, 11, 0.4);
         }
-        .pulse-red {
-            animation: pulse-red 2s infinite;
+        .glow-cyan {
+            box-shadow: 0 0 8px rgba(6, 182, 212, 0.4);
         }
-        @keyframes pulse-red {
-            0% { opacity: 1; }
-            50% { opacity: 0.6; }
-            100% { opacity: 1; }
+        .progress-segmented::-webkit-progress-bar {
+            background-color: #2d3139;
+            border-radius: 0;
         }
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 4px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: #0f172a;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #334155;
-            border-radius: 2px;
+        .progress-segmented::-webkit-progress-value {
+            background-image: repeating-linear-gradient(
+                -45deg,
+                transparent,
+                transparent 4px,
+                theme('colors.primary-container') 4px,
+                theme('colors.primary-container') 8px
+            );
         }
     </style>
 </head>
-<body class="font-body-md text-body-md flex h-screen overflow-hidden">
-<!-- SideNavBar -->
-<aside class="hidden md:flex flex-col h-screen py-stack-md px-stack-sm bg-surface-container-low border-r border-outline-variant w-64 shrink-0">
-<div class="px-stack-sm mb-stack-lg">
-<div class="flex items-center gap-3 mb-2">
-<div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center">
-<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">factory</span>
-</div>
+<body class="min-h-screen p-container-padding flex flex-col gap-panel-gap">
+<!-- Header -->
+<header class="industrial-panel flex justify-between items-center p-4">
 <div>
-<h2 class="font-headline-md text-headline-md text-primary leading-none">Plant Area A</h2>
-<span class="font-label-caps text-label-caps text-on-surface-variant">Sector 7 North</span>
-</div>
-</div>
-</div>
-<nav class="flex-1 space-y-1">
-<a class="flex items-center gap-3 px-stack-sm py-2 bg-secondary-container text-on-secondary-container rounded-lg font-bold transition-all duration-150" href="#">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">sensors</span>
-<span class="font-label-caps text-label-caps uppercase">Live Feeds</span>
-</a>
-<a class="flex items-center gap-3 px-stack-sm py-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all duration-150" href="#">
-<span class="material-symbols-outlined">history</span>
-<span class="font-label-caps text-label-caps uppercase">Historical Data</span>
-</a>
-<a class="flex items-center gap-3 px-stack-sm py-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all duration-150" href="#">
-<span class="material-symbols-outlined">assessment</span>
-<span class="font-label-caps text-label-caps uppercase">Risk Matrix</span>
-</a>
-<a class="flex items-center gap-3 px-stack-sm py-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all duration-150" href="#">
-<span class="material-symbols-outlined">monitor_heart</span>
-<span class="font-label-caps text-label-caps uppercase">System Health</span>
-</a>
-</nav>
-<div class="mt-auto pt-stack-md border-t border-outline-variant">
-<button class="w-full mb-stack-md bg-on-primary-container text-surface py-2 rounded-lg font-bold font-label-caps text-label-caps uppercase active:scale-95 transition-transform">
-                Generate Report
-            </button>
-<div class="space-y-1">
-<a class="flex items-center gap-3 px-stack-sm py-2 text-on-surface-variant hover:text-on-surface transition-all" href="#">
-<span class="material-symbols-outlined">support_agent</span>
-<span class="font-label-caps text-label-caps uppercase">Support</span>
-</a>
-<a class="flex items-center gap-3 px-stack-sm py-2 text-on-surface-variant hover:text-on-surface transition-all" href="#">
-<span class="material-symbols-outlined text-error">logout</span>
-<span class="font-label-caps text-label-caps uppercase">Sign Out</span>
-</a>
-</div>
-</div>
-</aside>
-<!-- Main Viewport -->
-<div class="flex-1 flex flex-col min-w-0 bg-background overflow-hidden relative">
-<!-- TopNavBar -->
-<header class="flex justify-between items-center px-gutter w-full h-16 bg-surface-container border-b border-outline-variant shrink-0 z-10">
-<div class="flex items-center gap-4">
-<span class="font-headline-md text-headline-md font-bold text-on-surface">Refinery Safety Monitor</span>
-<div class="flex items-center gap-2 px-3 py-1 bg-error-container/20 border border-error/30 rounded-full critical-glow pulse-red">
-<span class="w-2 h-2 rounded-full bg-error"></span>
-<span class="font-label-caps text-label-caps text-error uppercase">3 Critical Alerts</span>
-</div>
+<h1 class="font-headline-md text-headline-md text-primary">AI-Based Worker Fatigue and Ergonomic Risk Assessment</h1>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-1">Refinery Worker Safety Analysis Dashboard</p>
 </div>
 <div class="flex items-center gap-4">
-<div class="relative group hidden sm:block">
-<input class="bg-surface-container-lowest border border-outline-variant rounded-full px-4 py-1.5 text-body-md w-64 focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Search parameters..." type="text"/>
-<span class="material-symbols-outlined absolute right-3 top-2 text-on-surface-variant text-sm">search</span>
-</div>
-<div class="flex items-center gap-2">
-<button class="p-2 text-on-surface-variant hover:bg-surface-variant rounded-full transition-colors"><span class="material-symbols-outlined">notifications</span></button>
-<button class="p-2 text-on-surface-variant hover:bg-surface-variant rounded-full transition-colors"><span class="material-symbols-outlined">settings</span></button>
-<div class="w-8 h-8 rounded-full bg-primary overflow-hidden border border-outline ml-2">
-<img class="w-full h-full object-cover" data-alt="Close-up professional portrait of a chief safety operator wearing high-visibility gear and a safety helmet in a dimly lit refinery control room, focused and authoritative expression, cinematic industrial lighting, high-contrast dark mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDl0c7poskwYoy5F545ofYeQvZx6iWh2HKQApaewjB1oEl1jVY_SA6yEZzHYN3mttSPkB1ZfFbV7-dE0jG-LaWoGsAGSProHovZ0Hp-fsGXkSxDNylhxmBtABMraUJnagr2gEAIEB6uVT-Oo71k8wL-lORFk0UBbBh7YLkEk1eNUvEfiNrNkDVWbdlf79wmsQPdPwyiPZCSiegdO70FdisI9ZNEXWOmKsDNx-xQTfsh2tExUsZN2lGX5-jZ4Ov5u9590m3PTc_CaBw"/>
-</div>
-</div>
+<div class="flex items-center gap-2 px-3 py-1 bg-[#121417] border border-cyan-500 rounded text-cyan-400 font-label-caps text-label-caps glow-cyan">
+<span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                System Status: Active
+            </div>
+<div class="font-data-mono-lg text-data-mono-lg text-on-surface" id="real-time-clock">14:22:05</div>
 </div>
 </header>
-<!-- Content Area -->
-<main class="flex-1 overflow-y-auto p-gutter custom-scrollbar">
-<div class="max-w-[1600px] mx-auto space-y-gutter">
-<!-- Top Grid: Feed & Sidebar -->
-<div class="grid grid-cols-12 gap-gutter">
-<!-- Left Column: Live Safety Feed -->
-<div class="col-span-12 lg:col-span-8 space-y-gutter">
-<div class="glass-panel rounded-xl overflow-hidden flex flex-col border border-outline-variant">
-<div class="px-stack-md py-stack-sm flex justify-between items-center bg-surface-container-high/50">
-<div class="flex items-center gap-2">
-<span class="w-2 h-2 rounded-full bg-error animate-pulse"></span>
-<h3 class="font-label-caps text-label-caps uppercase tracking-widest">Live Safety Feed: Cam-07-North</h3>
+<!-- KPI Row -->
+<section class="grid grid-cols-5 gap-panel-gap">
+<div class="industrial-panel p-4 flex flex-col justify-between">
+<h2 class="font-label-caps text-label-caps text-on-surface-variant border-b border-[#2d3139] pb-2 mb-2">Total Workers</h2>
+<div class="font-display-lg text-display-lg">12</div>
 </div>
-<div class="flex gap-2">
-<span class="px-2 py-0.5 rounded bg-surface-container-lowest border border-outline-variant font-data-mono text-[10px] text-on-surface-variant">FPS: 30</span>
-<span class="px-2 py-0.5 rounded bg-surface-container-lowest border border-outline-variant font-data-mono text-[10px] text-on-surface-variant">LAT: 14ms</span>
+<div class="industrial-panel p-4 flex flex-col justify-between border-l-4 border-red-500">
+<h2 class="font-label-caps text-label-caps text-on-surface-variant border-b border-[#2d3139] pb-2 mb-2">High Risk</h2>
+<div class="font-display-lg text-display-lg text-red-500">2</div>
 </div>
+<div class="industrial-panel p-4 flex flex-col justify-between border-l-4 border-amber-500">
+<h2 class="font-label-caps text-label-caps text-on-surface-variant border-b border-[#2d3139] pb-2 mb-2">Medium Risk</h2>
+<div class="font-display-lg text-display-lg text-amber-500">3</div>
 </div>
-<div class="relative aspect-video bg-black group">
-<div class="absolute inset-0 z-0" data-alt="A gritty high-angle industrial refinery interior view at night with orange safety lights. Multiple workers in orange jumpsuits and hardhats are moving around heavy machinery. Computer vision overlays show translucent glowing green and red bounding boxes around workers with safety risk labels floating nearby. High-tech HUD aesthetic, moody atmosphere." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCdKtjExckybi2VGPwrzJhq5QdiAVTdOaKRwccB0RjP23uIMbJScxcV5Nz6TzYKTxgsInU4b-x0J_VWvN9XcApNE3z45kG7fMeysyhjjWYIYq-lYx6NpjoJuDTA_bNJDCQXT_nuybfovAGXl1VeZ-eCSagk1Gbz6RZbNhXPRGelww7R5wNu-gvycvOri3_b8omxQvmAyn7e7zdcy6YTFTngHtJnvQ1q83FJDnI_jYmUbINnYhAzfNqk26mVkpOjZvQO32RstIu7wZM')"></div>
-<!-- Simulated Bounding Boxes -->
-<div class="absolute top-[20%] left-[30%] w-24 h-48 border-2 border-primary/50 pointer-events-none">
-<div class="absolute -top-6 left-0 bg-primary/20 backdrop-blur px-1 text-[10px] font-data-mono text-primary border border-primary/50">WORKER_342 [SAFE]</div>
+<div class="industrial-panel p-4 flex flex-col justify-between border-l-4 border-emerald-500">
+<h2 class="font-label-caps text-label-caps text-on-surface-variant border-b border-[#2d3139] pb-2 mb-2">Low Risk</h2>
+<div class="font-display-lg text-display-lg text-emerald-500">7</div>
 </div>
-<div class="absolute top-[40%] right-[25%] w-28 h-52 border-2 border-error pointer-events-none">
-<div class="absolute -top-6 left-0 bg-error/20 backdrop-blur px-1 text-[10px] font-data-mono text-error border border-error/50">WORKER_109 [FATIGUE_WARN]</div>
+<div class="industrial-panel p-4 flex flex-col justify-between">
+<h2 class="font-label-caps text-label-caps text-on-surface-variant border-b border-[#2d3139] pb-2 mb-2">Avg Fatigue</h2>
+<div class="font-display-lg text-display-lg text-primary">42%</div>
 </div>
-<div class="video-overlay absolute inset-0 pointer-events-none"></div>
-<div class="absolute bottom-4 left-4 flex gap-3">
-<button class="bg-surface/80 hover:bg-surface px-3 py-1 rounded text-xs font-label-caps flex items-center gap-1 border border-outline-variant"><span class="material-symbols-outlined text-sm">videocam</span> Record</button>
-<button class="bg-surface/80 hover:bg-surface px-3 py-1 rounded text-xs font-label-caps flex items-center gap-1 border border-outline-variant"><span class="material-symbols-outlined text-sm">zoom_in</span> Focus</button>
+</section>
+<!-- Main Content -->
+<section class="grid grid-cols-12 gap-panel-gap">
+<!-- Video Panel -->
+<div class="col-span-8 industrial-panel flex flex-col relative h-[500px]">
+<div class="p-3 border-b border-[#2d3139] flex justify-between items-center bg-[#121417]">
+<h2 class="font-label-caps text-label-caps text-on-surface-variant">Live Processed Video Feed</h2>
+<div class="flex gap-2 text-primary font-helper-sm text-helper-sm">
+<span class="material-symbols-outlined text-[16px]">videocam</span>
+                    Camera 04 - Cracking Unit
+                </div>
 </div>
-</div>
-</div>
-<!-- Fatigue Trend Chart Panel -->
-<div class="glass-panel rounded-xl p-stack-md border border-outline-variant">
-<div class="flex justify-between items-center mb-4">
-<h3 class="font-label-caps text-label-caps uppercase text-on-surface-variant">Fatigue Trend (Last 8 Hours)</h3>
-<div class="flex gap-4">
-<div class="flex items-center gap-2"><span class="w-3 h-0.5 bg-primary"></span> <span class="text-[10px] font-label-caps text-on-surface-variant">AGGREGATE RISK</span></div>
-<div class="flex items-center gap-2"><span class="w-3 h-0.5 bg-error"></span> <span class="text-[10px] font-label-caps text-on-surface-variant">THRESHOLD</span></div>
-</div>
-</div>
-<div class="h-48 w-full relative flex items-end justify-between gap-1">
-<!-- Simulated Line Chart via CSS / Simple elements -->
-<svg class="absolute inset-0 w-full h-full" preserveaspectratio="none" viewbox="0 0 400 100">
-<path d="M0,80 Q50,70 100,75 T200,40 T300,85 T400,60" fill="none" stroke="rgba(190, 198, 224, 0.5)" stroke-width="2"></path>
-<line stroke="rgba(239, 68, 68, 0.4)" stroke-dasharray="4" stroke-width="1" x1="0" x2="400" y1="30" y2="30"></line>
-</svg>
-<div class="absolute inset-0 flex flex-col justify-between pointer-events-none">
-<div class="border-b border-outline-variant/30 w-full h-0"></div>
-<div class="border-b border-outline-variant/30 w-full h-0"></div>
-<div class="border-b border-outline-variant/30 w-full h-0"></div>
-<div class="border-b border-outline-variant/30 w-full h-0"></div>
-</div>
-<div class="z-10 w-full flex justify-between px-2 pt-48 mt-2 text-[10px] font-data-mono text-on-surface-variant">
-<span>08:00</span><span>10:00</span><span>12:00</span><span>14:00</span><span>16:00</span>
+<div class="flex-grow relative overflow-hidden bg-black">
+<div class="w-full h-full bg-cover bg-center opacity-50 mix-blend-luminosity" data-alt="A highly detailed industrial refinery setting seen through a security camera view, emphasizing complex piping, metallic surfaces, and high-contrast dramatic lighting suitable for a mission-critical HUD interface. The scene is dark graphite with cyan and red graphical overlays simulating a computer vision system analyzing worker posture. The mood is tense, precise, and technologically advanced." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDRe21udUEy5dG3qMAkHJjF5uXqCIV4rh_oBHB6tQU5tiNZOVuzzUgNctrTk4V0o_FQjabAnLwex2e8LjzNk0QStG77AT1g-UN_o0P7wF7mTE8_QEq8tnrkKNiJUIdvilQpvtg-_gJOmZZjmxg1crUauPQPokI6tjoNkaes_3_hLI7l0WbLGphv5W8MinBgbX-ZrOsm9l7v9zdhVUa40DJ2FLJTV-HvTIRc9h3m8P3SVSAiuVCPxDqDnqemMI_SVIfpARv6MBFl9AU')"></div>
+<!-- Overlay Elements -->
+<div class="absolute inset-0 border-2 border-red-500 m-8 flex flex-col justify-end p-4 glow-red" style="clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 0 10px, 10px 0, 0 0);">
+<div class="bg-[#1e2126]/90 border border-red-500 p-2 inline-block max-w-max mb-2">
+<div class="font-label-caps text-label-caps text-red-500 mb-1">Worker #042 - High Risk</div>
+<div class="font-data-mono-lg text-data-mono-lg text-white">Fatigue: 82%</div>
 </div>
 </div>
 </div>
-</div>
-<!-- Right Column: Sidebar within content -->
-<div class="col-span-12 lg:col-span-4 space-y-gutter">
-<!-- Active Alerts -->
-<div class="glass-panel rounded-xl flex flex-col border border-outline-variant h-[400px]">
-<div class="p-stack-md border-b border-outline-variant flex justify-between items-center bg-surface-container-high/30">
-<h3 class="font-label-caps text-label-caps uppercase">Active Alerts</h3>
-<span class="material-symbols-outlined text-sm text-on-surface-variant">filter_list</span>
-</div>
-<div class="flex-1 overflow-y-auto custom-scrollbar p-stack-sm space-y-2">
-<div class="bg-error/10 border-l-4 border-error p-3 rounded shadow-sm">
-<div class="flex justify-between items-start mb-1">
-<span class="font-label-caps text-label-caps text-error">CRITICAL FATIGUE</span>
-<span class="font-data-mono text-[10px] text-on-surface-variant">14:22:10</span>
-</div>
-<p class="font-body-md text-on-surface text-sm mb-1">Marcus Thorne (ID: 902)</p>
-<p class="text-xs text-on-surface-variant">Slow blink detected, micro-sleep event risk high.</p>
-</div>
-<div class="bg-tertiary/10 border-l-4 border-tertiary p-3 rounded shadow-sm">
-<div class="flex justify-between items-start mb-1">
-<span class="font-label-caps text-label-caps text-tertiary">ERGONOMIC STRAIN</span>
-<span class="font-data-mono text-[10px] text-on-surface-variant">14:18:05</span>
-</div>
-<p class="font-body-md text-on-surface text-sm mb-1">Sarah Jenkins (ID: 442)</p>
-<p class="text-xs text-on-surface-variant">Repetitive overhead lifting exceeded limit (30min).</p>
-</div>
-<div class="bg-error/10 border-l-4 border-error p-3 rounded shadow-sm">
-<div class="flex justify-between items-start mb-1">
-<span class="font-label-caps text-label-caps text-error">PPE VIOLATION</span>
-<span class="font-data-mono text-[10px] text-on-surface-variant">14:05:44</span>
-</div>
-<p class="font-body-md text-on-surface text-sm mb-1">Unidentified Personnel</p>
-<p class="text-xs text-on-surface-variant">No safety eyewear detected in Zone 4.</p>
+<div class="p-3 border-t border-[#2d3139] bg-[#121417] flex items-center gap-4">
+<span class="font-label-caps text-label-caps text-primary">Processing: 74%</span>
+<progress class="progress-segmented h-2 flex-grow w-full" max="100" value="74"></progress>
 </div>
 </div>
-<button class="m-stack-sm py-2 text-center text-xs font-label-caps uppercase text-primary border border-primary/30 hover:bg-primary/10 transition-colors rounded">
-                                Clear All Notifications
-                            </button>
+<!-- Alert Feed -->
+<div class="col-span-4 industrial-panel flex flex-col h-[500px]">
+<div class="p-3 border-b border-[#2d3139] bg-[#121417]">
+<h2 class="font-label-caps text-label-caps text-on-surface-variant">Alert Feed</h2>
 </div>
-<!-- Risk Distribution Donut -->
-<div class="glass-panel rounded-xl p-stack-md border border-outline-variant flex flex-col items-center">
-<h3 class="font-label-caps text-label-caps uppercase text-on-surface-variant self-start mb-6">Risk Distribution</h3>
-<div class="relative w-48 h-48 mb-6">
-<svg class="w-full h-full transform -rotate-90" viewbox="0 0 100 100">
-<circle cx="50" cy="50" fill="transparent" r="40" stroke="#1e293b" stroke-width="12"></circle>
-<circle cx="50" cy="50" fill="transparent" r="40" stroke="#ffb4ab" stroke-dasharray="251" stroke-dashoffset="180" stroke-width="12"></circle>
-<circle cx="50" cy="50" fill="transparent" r="40" stroke="#dec29a" stroke-dasharray="251" stroke-dashoffset="100" stroke-width="12"></circle>
-<circle cx="50" cy="50" fill="transparent" r="40" stroke="#bec6e0" stroke-dasharray="251" stroke-dashoffset="30" stroke-width="12"></circle>
-</svg>
-<div class="absolute inset-0 flex flex-col items-center justify-center">
-<span class="font-data-mono text-headline-md leading-none">24</span>
-<span class="font-label-caps text-[10px] text-on-surface-variant uppercase">Total Events</span>
+<div class="flex-grow overflow-y-auto p-4 flex flex-col gap-2">
+<div class="bg-[#121417] border border-red-500/50 p-3 flex justify-between items-start glow-red">
+<div>
+<div class="font-label-caps text-label-caps text-red-400 mb-1">High Fatigue Detected</div>
+<div class="font-body-md text-body-md text-white">ID #042 | Area: Cracking Unit</div>
 </div>
+<div class="font-data-mono-lg text-data-mono-lg text-[14px] text-red-400">14:22:05</div>
 </div>
-<div class="w-full space-y-2">
-<div class="flex justify-between items-center text-xs">
-<div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-error"></span> <span>Fatigue</span></div>
-<span class="font-data-mono">42%</span>
+<div class="bg-[#121417] border border-amber-500/50 p-3 flex justify-between items-start">
+<div>
+<div class="font-label-caps text-label-caps text-amber-400 mb-1">Unsafe Posture</div>
+<div class="font-body-md text-body-md text-white">ID #018 | Area: Distillation</div>
 </div>
-<div class="flex justify-between items-center text-xs">
-<div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-tertiary"></span> <span>Ergonomic</span></div>
-<span class="font-data-mono">35%</span>
+<div class="font-data-mono-lg text-data-mono-lg text-[14px] text-amber-400">14:21:30</div>
 </div>
-<div class="flex justify-between items-center text-xs">
-<div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-primary"></span> <span>PPE / Other</span></div>
-<span class="font-data-mono">23%</span>
+<div class="bg-[#121417] border border-[#2d3139] p-3 flex justify-between items-start">
+<div>
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-1">System Diagnostic</div>
+<div class="font-body-md text-body-md text-on-surface">Calibration complete for Cam 02</div>
+</div>
+<div class="font-data-mono-lg text-data-mono-lg text-[14px] text-on-surface-variant">14:15:00</div>
+</div>
+<div class="bg-[#121417] border border-amber-500/50 p-3 flex justify-between items-start">
+<div>
+<div class="font-label-caps text-label-caps text-amber-400 mb-1">Elevated Heart Rate</div>
+<div class="font-body-md text-body-md text-white">ID #033 | Area: Boiler Room</div>
+</div>
+<div class="font-data-mono-lg text-data-mono-lg text-[14px] text-amber-400">14:10:12</div>
 </div>
 </div>
 </div>
-</div>
-</div>
-<!-- Bottom Full-Width: Worker Risk Assessment Table -->
-<div class="glass-panel rounded-xl border border-outline-variant overflow-hidden">
-<div class="px-gutter py-stack-md border-b border-outline-variant flex justify-between items-center bg-surface-container-high/30">
-<h3 class="font-headline-md text-headline-md text-primary">Worker Risk Assessment</h3>
-<div class="flex gap-2">
-<button class="px-3 py-1.5 bg-surface-container-lowest border border-outline-variant rounded flex items-center gap-2 text-xs font-label-caps hover:bg-surface-variant transition-colors">
-<span class="material-symbols-outlined text-sm">download</span> Export CSV
-                            </button>
-</div>
+</section>
+<!-- Bottom Section: Analytics & Table -->
+<section class="grid grid-cols-12 gap-panel-gap">
+<!-- Table -->
+<div class="col-span-8 industrial-panel flex flex-col">
+<div class="p-3 border-b border-[#2d3139] bg-[#121417]">
+<h2 class="font-label-caps text-label-caps text-on-surface-variant">Worker Risk Assessment Table</h2>
 </div>
 <div class="overflow-x-auto">
 <table class="w-full text-left border-collapse">
 <thead>
-<tr class="bg-surface-container-lowest/50 border-b border-outline-variant">
-<th class="px-gutter py-3 font-label-caps text-[11px] text-on-surface-variant uppercase">Worker ID</th>
-<th class="px-gutter py-3 font-label-caps text-[11px] text-on-surface-variant uppercase">Name</th>
-<th class="px-gutter py-3 font-label-caps text-[11px] text-on-surface-variant uppercase">Fatigue Score</th>
-<th class="px-gutter py-3 font-label-caps text-[11px] text-on-surface-variant uppercase">Primary Ergonomic Risk</th>
-<th class="px-gutter py-3 font-label-caps text-[11px] text-on-surface-variant uppercase">Shift Duration</th>
-<th class="px-gutter py-3 font-label-caps text-[11px] text-on-surface-variant uppercase">Status</th>
+<tr class="border-b border-[#2d3139] bg-[#121417]">
+<th class="p-3 font-label-caps text-label-caps text-on-surface-variant font-normal">Worker ID</th>
+<th class="p-3 font-label-caps text-label-caps text-on-surface-variant font-normal">Fatigue Score</th>
+<th class="p-3 font-label-caps text-label-caps text-on-surface-variant font-normal">Risk Level</th>
+<th class="p-3 font-label-caps text-label-caps text-on-surface-variant font-normal">Back Angle</th>
+<th class="p-3 font-label-caps text-label-caps text-on-surface-variant font-normal">Primary Risk</th>
 </tr>
 </thead>
-<tbody class="divide-y divide-outline-variant/30">
-<tr class="hover:bg-surface-container-high/20 transition-colors">
-<td class="px-gutter py-4 font-data-mono text-sm">#902-MT</td>
-<td class="px-gutter py-4 font-body-md">Marcus Thorne</td>
-<td class="px-gutter py-4">
-<div class="flex items-center gap-3">
-<span class="font-data-mono text-error">8.4</span>
-<div class="w-24 h-1.5 bg-surface-container-lowest rounded-full overflow-hidden">
-<div class="h-full bg-error w-[84%]"></div>
-</div>
-</div>
-</td>
-<td class="px-gutter py-4 text-sm text-on-surface-variant">Lumbar strain (High)</td>
-<td class="px-gutter py-4 text-sm text-on-surface-variant">07:42:15</td>
-<td class="px-gutter py-4">
-<span class="px-2 py-1 rounded bg-error-container text-on-error-container text-[10px] font-bold uppercase border border-error">INTERVENTION REQ</span>
-</td>
+<tbody class="font-body-md text-body-md">
+<tr class="border-b border-[#2d3139] hover:bg-[#252b2d] transition-colors">
+<td class="p-3 font-data-mono-lg text-[14px]">#042</td>
+<td class="p-3 text-red-400">82%</td>
+<td class="p-3"><span class="px-2 py-1 bg-red-900/50 text-red-400 border border-red-500 rounded text-xs">High</span></td>
+<td class="p-3">45°</td>
+<td class="p-3">Lower Back Strain</td>
 </tr>
-<tr class="hover:bg-surface-container-high/20 transition-colors">
-<td class="px-gutter py-4 font-data-mono text-sm">#442-SJ</td>
-<td class="px-gutter py-4 font-body-md">Sarah Jenkins</td>
-<td class="px-gutter py-4">
-<div class="flex items-center gap-3">
-<span class="font-data-mono text-tertiary">5.2</span>
-<div class="w-24 h-1.5 bg-surface-container-lowest rounded-full overflow-hidden">
-<div class="h-full bg-tertiary w-[52%]"></div>
-</div>
-</div>
-</td>
-<td class="px-gutter py-4 text-sm text-on-surface-variant">Shoulder fatigue (Med)</td>
-<td class="px-gutter py-4 text-sm text-on-surface-variant">04:12:00</td>
-<td class="px-gutter py-4">
-<span class="px-2 py-1 rounded bg-tertiary-container text-tertiary text-[10px] font-bold uppercase border border-tertiary">MONITORING</span>
-</td>
+<tr class="border-b border-[#2d3139] hover:bg-[#252b2d] transition-colors">
+<td class="p-3 font-data-mono-lg text-[14px]">#018</td>
+<td class="p-3 text-amber-400">65%</td>
+<td class="p-3"><span class="px-2 py-1 bg-amber-900/50 text-amber-400 border border-amber-500 rounded text-xs">Medium</span></td>
+<td class="p-3">30°</td>
+<td class="p-3">Neck Strain</td>
 </tr>
-<tr class="hover:bg-surface-container-high/20 transition-colors">
-<td class="px-gutter py-4 font-data-mono text-sm">#115-DP</td>
-<td class="px-gutter py-4 font-body-md">David Park</td>
-<td class="px-gutter py-4">
-<div class="flex items-center gap-3">
-<span class="font-data-mono text-primary">1.8</span>
-<div class="w-24 h-1.5 bg-surface-container-lowest rounded-full overflow-hidden">
-<div class="h-full bg-primary w-[18%]"></div>
-</div>
-</div>
-</td>
-<td class="px-gutter py-4 text-sm text-on-surface-variant">None Detected</td>
-<td class="px-gutter py-4 text-sm text-on-surface-variant">02:30:10</td>
-<td class="px-gutter py-4">
-<span class="px-2 py-1 rounded bg-secondary-container text-on-secondary-container text-[10px] font-bold uppercase border border-outline">NOMINAL</span>
-</td>
+<tr class="border-b border-[#2d3139] hover:bg-[#252b2d] transition-colors">
+<td class="p-3 font-data-mono-lg text-[14px]">#033</td>
+<td class="p-3 text-amber-400">58%</td>
+<td class="p-3"><span class="px-2 py-1 bg-amber-900/50 text-amber-400 border border-amber-500 rounded text-xs">Medium</span></td>
+<td class="p-3">15°</td>
+<td class="p-3">Heat Exhaustion</td>
+</tr>
+<tr class="hover:bg-[#252b2d] transition-colors">
+<td class="p-3 font-data-mono-lg text-[14px]">#055</td>
+<td class="p-3 text-emerald-400">12%</td>
+<td class="p-3"><span class="px-2 py-1 bg-emerald-900/50 text-emerald-400 border border-emerald-500 rounded text-xs">Low</span></td>
+<td class="p-3">5°</td>
+<td class="p-3">None</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
+<!-- Action Bar -->
+<div class="col-span-4 flex flex-col gap-panel-gap">
+<div class="industrial-panel p-6 flex flex-col items-center justify-center border-dashed border-2 border-outline-variant hover:border-primary-container transition-colors cursor-pointer bg-[#121417] flex-grow">
+<span class="material-symbols-outlined text-[48px] text-on-surface-variant mb-4">cloud_upload</span>
+<p class="font-headline-md text-headline-md text-on-surface text-center mb-2">Drag &amp; Drop Footage</p>
+<p class="font-body-md text-body-md text-on-surface-variant text-center mb-6">Upload .mp4 or stream URL for analysis</p>
+<div class="flex gap-4 w-full">
+<button class="flex-1 bg-[#1e2126] border border-cyan-500 text-cyan-400 py-2 px-4 font-label-caps text-label-caps hover:bg-cyan-900/30 transition-colors">
+                        Start Analysis
+                    </button>
+<button class="flex-1 bg-[#1e2126] border border-[#2d3139] text-on-surface py-2 px-4 font-label-caps text-label-caps hover:bg-[#252b2d] transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[16px]">download</span> Report
+                    </button>
 </div>
-</main>
 </div>
-<script>
-        // Micro-interaction for row highlighting
-        document.querySelectorAll('tbody tr').forEach(row => {
-            row.addEventListener('mouseenter', () => {
-                row.classList.add('translate-x-1');
-            });
-            row.addEventListener('mouseleave', () => {
-                row.classList.remove('translate-x-1');
-            });
-        });
-
-        // Simple real-time clock update (for HUD feel)
-        setInterval(() => {
-            const now = new Date();
-            const timeStr = now.toTimeString().split(' ')[0];
-            // If we had a clock element we could update it
-        }, 1000);
-    </script>
+</div>
+</section>
 </body></html>
