@@ -1,0 +1,6 @@
+# requirements.txt — Module 3: Fatigue Analysis and Ergonomic Risk Assessment
+# Python 3.11+
+# Install: pip install -r requirements.txt
+
+numpy>=1.26.0       # Angle calculations (dot product, arccos, clip)
+pandas>=2.2.0       # Optional: used for tabular summaries / CSV export
